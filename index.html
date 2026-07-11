@@ -157,19 +157,19 @@
         #tabellaAcquisti td:nth-child(8) { width: 80px; min-width: 80px; } /* Anni Contratto */
         
         #tabellaAcquisti th:nth-child(9), 
-        #tabellaAcquisti td:nth-child(9) { width: 100px; min-width: 100px; } /* Quota Ammort */
+        #tabellaAcquisti td:nth-child(9) { width: 140px; min-width: 140px; } /* Quota Ammort */
         
         #tabellaAcquisti th:nth-child(10), 
         #tabellaAcquisti td:nth-child(10) { width: 120px; min-width: 120px; } /* Stipendio Netto */
         
         #tabellaAcquisti th:nth-child(11), 
-        #tabellaAcquisti td:nth-child(11) { width: 100px; min-width: 100px; } /* Stipendio Lordo */
+        #tabellaAcquisti td:nth-child(11) { width: 140px; min-width: 140px; } /* Stipendio Lordo */
         
         #tabellaAcquisti th:nth-child(12), 
         #tabellaAcquisti td:nth-child(12) { width: 80px; min-width: 80px; text-align: center; } /* Decreto */
         
         #tabellaAcquisti th:nth-child(13), 
-        #tabellaAcquisti td:nth-child(13) { width: 120px; min-width: 120px; } /* Sessione */
+        #tabellaAcquisti td:nth-child(13) { width: 105px; min-width: 105px; } /* Sessione */
 
         /* Larghezze specifiche colonne Cessioni */
         #tabellaCessioni th:nth-child(1), 
@@ -340,6 +340,10 @@
             font-weight: 600;
         }
 
+        .text-right {
+            text-align: right;
+        }
+
         .summary-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -481,9 +485,9 @@
                             <td id="totalePrezzoRiscattoAcq">€ 0</td>
                             <td id="totalePrezzoAcq">€ 0</td>
                             <td></td>
-                            <td id="totaleQuotaAmmortAcq">€ 0</td>
+                            <td id="totaleQuotaAmmortAcq" class="text-right">€ 0</td>
                             <td id="totaleStipendioNettoAcq">€ 0</td>
-                            <td id="totaleStipendioLordoAcq">€ 0</td>
+                            <td id="totaleStipendioLordoAcq" class="text-right">€ 0</td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -535,14 +539,14 @@
                             <td id="totalePrezzoRiscattoCess">€ 0</td>
                             <td id="totalePrezzoVenditaCess">€ 0</td>
                             <td></td>
-                            <td id="totaleDisinvestimentoCess">€ 0</td>
-                            <td id="totalePlusvalenzaCess">€ 0</td>
-                            <td id="totalePotenzialePlusvalenzeCess">€ 0</td>
+                            <td id="totaleDisinvestimentoCess" class="text-right">€ 0</td>
+                            <td id="totalePlusvalenzaCess" class="text-right">€ 0</td>
+                            <td id="totalePotenzialePlusvalenzeCess" class="text-right">€ 0</td>
                             <td id="totaleSvalutazioniCess">€ 0</td>
                             <td></td>
                             <td id="totaleQuotaAmmortCess">€ 0</td>
                             <td id="totaleStipendioNettoCess">€ 0</td>
-                            <td id="totaleStipendioLordoCess">€ 0</td>
+                            <td id="totaleStipendioLordoCess" class="text-right">€ 0</td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -1717,8 +1721,8 @@
             document.getElementById('riepilogoPotenzialePlusvalenze').textContent = formattaValuta(Math.abs(potenzialePlusvalenze));
 
             // Colori dinamici con logica personalizzata
-            // AMMORTAMENTI: positivo=verde, negativo=rosso
-            aggiornaColoreCustom('riepilogoAmmortamenti', totaleAmmortamenti, false);
+            // AMMORTAMENTI: INVERTITI - positivo=rosso, negativo=verde
+            aggiornaColoreCustom('riepilogoAmmortamenti', totaleAmmortamenti, true);
             // STIPENDI: INVERTITI - positivo=rosso, negativo=verde  
             aggiornaColoreCustom('riepilogoStipendi', totaleStipendi, true);
             // PLUSVALENZE: sempre verde
